@@ -1,7 +1,3 @@
-
-const http = require('http');
-
-
 const Sequelize = require('sequelize');
 
 
@@ -19,13 +15,3 @@ sequelize
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
-
-  
-
-const app = require('./app')
-
-app.set('port, 3000')
-
-const server = http.createServer(app);
-
-server.listen(3000);

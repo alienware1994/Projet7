@@ -1,14 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Signup from '../views/Signup.vue'
-import OnePublication from '../views/OnePublication.vue'
-import NewPublication from '../views/NewPublication.vue'
-import UserProfil from '../views/UserProfil.vue'
-import OneUserPublications from '../views/OneUserPublications.vue'
-import PublicationsMostRecent from '../views/PublicationsMostRecent.vue'
-import PublicationsMostLiked from '../views/PublicationsMostLiked.vue'
-import PublicationsMostCommented from '../views/PublicationsMostCommented.vue'
+import Home from '../components/Login.vue'
+
 
 Vue.use(VueRouter)
 
@@ -21,42 +14,15 @@ const routes = [
   {
     path: '/signup',
     name: 'Signup',
-    component: Signup
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import( '../components/Signup.vue')
   },
   {
-    path: '/publication/:id',
-    name: 'OnePublication',
-    component: OnePublication
-  },
-  {
-    path: '/publications/user',
-    name: 'OneUserPublications',
-    component: OneUserPublications
-  },
-  {
-    path: '/user/profil',
-    name: 'UserProfil',
-    component: UserProfil
-  },
-  {
-    path: '/newpublication',
-    name: 'NewPublication',
-    component: NewPublication
-  },
-  {
-    path: '/publications/most-recent',
-    name: 'PublicationsMostRecent',
-    component: PublicationsMostRecent
-  },
-  {
-    path: '/publications/most-liked',
-    name: 'PublicationsMostLiked',
-    component: PublicationsMostLiked
-  },
-  {
-    path: '/publications/most-commented',
-    name: 'PublicationsMostCommented',
-    component: PublicationsMostCommented
+    path: '/login',
+    name: 'Login',
+    component: () => import( '../components/Login.vue')
   }
 ]
 
@@ -66,4 +32,4 @@ const router = new VueRouter({
   routes
 })
 
-export default router;
+export default router

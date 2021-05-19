@@ -1,9 +1,9 @@
 require('dotenv').config();      
-const express = require('express');    
-const bodyParser = require('body-parser');     
+const express = require('express');        
 const path = require('path');       
 const helmet = require('helmet');     
 const sanitizeMiddleware = require('sanitize-middleware');     
+
 
     
     
@@ -19,10 +19,18 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.urlencoded({ extended: false }));        
-app.use(bodyParser.json());     
+app.use(express.urlencoded({ extended: false }));        
+app.use(express.json()); 
 
-app.use(sanitizeMiddleware());      
+app.post('/register', (req, res) => {
+    res.send({
+        message: `Hello ${req.body.email} your user was registered`
+    })
+})
+   
+
+app.use(sanitizeMiddleware());  
+// app.use('/api/auth', userRoutes);    
 
 app.use('/images', express.static(path.join(__dirname, 'images')));   // middleware spécifique qui permet de servir le dossier image lors d'une requête spécifique avec l'image
 
