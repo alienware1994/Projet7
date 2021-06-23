@@ -30,19 +30,26 @@
                         <strong>Sign up</strong>
                     </a>
                     </router-link>
-                    <router-link to="login">            
-                    <a class="button is-light">
-                        Log in
+                    </div>
+                    <b-navbar-item href="/login">
+                               
+                    <div class="buttons">
+                    
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
                     </a>
-                    </router-link>
-                </div>
+                    
+                    </div>
+                    </b-navbar-item>
+                
             </b-navbar-item>
         </template>
     </b-navbar>
-</template>
-<script>
+   </template>    
+
+   <script>
 export default {
-    name: "Navigation"
+    name: "logins",
 }
 </script>
 

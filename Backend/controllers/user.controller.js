@@ -10,7 +10,7 @@ const {
 } = require('../config/db');
 
 exports.signup = async (req, res, next) => {
-
+    console.log(req.body.username);
     let u = await User.findAll({
         where: {
             email: req.body.email,    
@@ -20,7 +20,7 @@ exports.signup = async (req, res, next) => {
     if (u.length > 0) {
         return res.status(400).send("utilisateur existant")
     } else {
-        try {
+       
             User.create({
                 email: req.body.email,
                 username: req.body.username,
@@ -40,11 +40,7 @@ exports.signup = async (req, res, next) => {
                     userId: user.id
                 })
             })
-        } catch (error) {
-            return res.status(500).json({
-                error: error.message
-            })
-        }
+         
     }
 }
 
@@ -77,7 +73,7 @@ exports.login = async (req, res, next) => {
                 userId:user.id
             });
         } else {
-            return res.status(401).send('bad')
+            return res.status(401).send("Nom d'utilisateur ou mot de passe incorrect")
         }
 
     } else {

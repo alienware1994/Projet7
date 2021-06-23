@@ -1,8 +1,11 @@
-const { Sequelize, Datatypes } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 const db = require("../config/db");
+
+
 
 const User = db.define(
     "user", {
+
         username: {
             type: DataTypes.STRING,
         },
@@ -10,14 +13,18 @@ const User = db.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+
         password: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        isAdmin: {
-            type: Datatypes.BOOLEAN,
-            defaultValue: false,
+        isAdmin:{
+            type: DataTypes.BOOLEAN,
+            defaultValue:false,
+
         }
-    },
-    );
-    module.exports = User; //TRUE
+    }, 
+
+);
+// db.sync();
+module.exports = User; // true

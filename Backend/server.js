@@ -2,23 +2,23 @@
 const http = require('http');
 
 
-const Sequelize = require('sequelize');
+// const Sequelize = require('sequelize');
 
 
-const sequelize = new Sequelize('groupomania', 'root', '', {
-  host: '127.0.0.1',
-  dialect:'mysql'
-});
+// const sequelize = new Sequelize('groupomania', 'root', '', {
+//   host: '127.0.0.1',
+//   dialect:'mysql'
+// });
 
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Connection has been established successfully.');
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//   });
 
   
 

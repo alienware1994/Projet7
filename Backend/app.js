@@ -1,14 +1,17 @@
-require('dotenv').config();      
-const express = require('express');        
+require('dotenv').config();  
+require('./models/synchro.js');    
+const express = require('express');  
+const app = express();        
 const path = require('path');       
 const helmet = require('helmet');     
 const sanitizeMiddleware = require('sanitize-middleware');     
 
-
+const userRoutes = require('./routes/users.js');
+const postRoutes = require('./routes/post.js');
     
     
 
-const app = express();      
+    
 
 app.use(helmet());      
 
@@ -22,11 +25,7 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: false }));        
 app.use(express.json()); 
 
-app.post('/register', (req, res) => {
-    res.send({
-        message: `Hello ${req.body.email} your user was registered`
-    })
-})
+
    
 
 app.use(sanitizeMiddleware());  
@@ -34,6 +33,7 @@ app.use(sanitizeMiddleware());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));   // middleware spécifique qui permet de servir le dossier image lors d'une requête spécifique avec l'image
 
-
+ app.use('/api/auth', userRoutes);
+ app.use('/api/posts', postRoutes);
 
 module.exports = app;       // Exportation de l'application pour y accéder à partir des autres fichiers

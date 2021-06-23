@@ -1,13 +1,16 @@
-const { Sequelize, Datatypes} = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 const db = require("../config/db");
 
 const Comment = db.define(
     "comment",
 {
     comment: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
         defaultValue: '',
         allowNull: false
     },
 },
 );
+
+
+module.exports = Comment; //true

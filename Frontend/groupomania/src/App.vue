@@ -1,31 +1,36 @@
 <template>
 
   <div id="app">
-     <Navigation />
-      <Home />
-    <Header />
+      
+    <Header /> 
+    
    <router-view/>
   </div>
  
 </template>
 
 <script>
-import Navigation from './components/Nav'
+import axios from 'axios'
+ import Navigation from './components/Nav'
 import Header from './components/Header'
 import Home from './view/Home.vue'
+import login from './view/Login.vue'
 import Signup from './components/Signup.vue'
-import Login from './components/Login.vue'
 
 export default {
-  name: 'App',
+  name: "app",
+  created: function () {
+    let token = localStorage.getItem("UserToken");
+    axios.defaults.headers.common["Authorization"] = token;
+  },
   components: {
     Header,
     Home,
     Signup,
-    Login,
-    Navigation
-  }
-}
+    login,
+     Navigation
+  },
+};
 </script>
 
 <style>

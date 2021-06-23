@@ -1,15 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../components/Login.vue'
+import Login from '../view/Login.vue'
+import Home from '../view/Home.vue'
 
 
 Vue.use(VueRouter)
-
+const ifAuthenticated = (to, from, next) => {
+  if (localStorage.getItem('UserToken')!= null) {
+    next();
+    return;
+  }
+  next();
+}
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/accueil',
+    name: "secure",
+    component: Home,
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/signup',
@@ -22,7 +35,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import( '../components/Login.vue')
+    component: Login
   }
 ]
 
